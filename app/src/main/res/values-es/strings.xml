@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EmergencyPrototype</string>
+    <string name="HelpRequestedBellAlertIconDescription">Ícono de campana</string>
+    <string name="AllClearAlertIconDescription">Ícono de Todo Claro Enviado</string>
+    <string name="help_requested_alarm_sound_on">Silenciar Alarma</string>
+    <string name="help_requested_alarm_sound_off">Activar Sonido de Alarma</string>
+    <string name="placeholder_notes">Cuéntanos qué sucedió (opcional)</string>
+    <string name="confirmation_dialog_option">Confirmar</string>
+    <string name="dismiss_dialog_option">Descartar</string>
+    <string name="tier_two_notified">Contactos de Nivel 2 notificados</string>
+    <string name="tier_two_cleared">Despejado</string>
+    <string name="tier_2_escalation_text">Escalada de Nivel 2 en %1$s</string>
+    <string name="escalate">Escalar</string>
+    <string name="all_clear_reason_title">Motivo del Todo Claro</string>
+    <string name="help_alert_title">Alerta de Ayuda</string>
+    <string name="confirm_all_clear_dialog_title">Confirmar Todo Claro</string>
+    <string name="confirm_all_clear_dialog_body">Presiona Confirmar para enviar el Todo Claro.</string>
+    <string name="send_confirm_button">Confirmar</string>
+    <string name="all_clear_sent_title">Todo Claro Enviado</string>
+    <string name="call_operator_body">Por favor, llama al operador para confirmar verbalmente la alarma.</string>
+    <string name="call_now_button">Llamar Ahora</string>
+    <string name="verbally_cleared_button">Ya Confirmado Verbalmente</string>
+    <string name="im_okay_button">Estoy Bien</string>
+    <string name="help_requested_title">Solicitud de Ayuda</string>
+    <string name="help_requested_body">Hemos enviado una solicitud de ayuda a %1$s</string>
+    <string name="send_all_clear_title">Enviar Todo Claro</string>
+    <string name="seconds_title">Segundos</string>
+
+</resources>

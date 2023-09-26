@@ -75,20 +75,26 @@ fun EmergencyUI(emergencyType: EmergencyType) {
         }
         Spacer(modifier = Modifier.height(8.dp))
 
-        val showBanner =
-            (!viewModel.confirmAllClear &&
-                    (emergencyType == EmergencyType.Tiered || emergencyType == EmergencyType.Monitored))
-            ||
-            (viewModel.confirmAllClear && (emergencyType == EmergencyType.Monitored && viewModel.isEmergencyEscalated))
+//        val showBanner =
+//            (!viewModel.confirmAllClear &&
+//                    (emergencyType == EmergencyType.Tiered || emergencyType == EmergencyType.Monitored))
+//            ||
+//            (viewModel.confirmAllClear && (emergencyType == EmergencyType.Monitored && viewModel.isEmergencyEscalated))
+        val showBanner = (((emergencyType == EmergencyType.Tiered || emergencyType == EmergencyType.Monitored)
+                    && viewModel.isEmergencyActive &&
+                ((emergencyType == EmergencyType.Monitored && (!viewModel.initiateAllClear || viewModel.isEmergencyEscalated))
+                        || (emergencyType == EmergencyType.Tiered && !viewModel.initiateAllClear))))
+                && ((emergencyType == EmergencyType.Tiered && !viewModel.confirmAllClear) || (emergencyType == EmergencyType.Monitored && (!viewModel.confirmAllClear || viewModel.isEmergencyEscalated)))
 
-        if (showBanner && viewModel.isEmergencyActive) {
+        if (showBanner) {
             Banner(
                 emergencyType,
                 onButtonClick = { viewModel.isEmergencyEscalated = true },
                 isCleared = viewModel.initiateAllClear
             )
         } else {
-            val spacerHeight = if (viewModel.initiateAllClear && emergencyType == EmergencyType.Normal) {
+//            val spacerHeight = if (viewModel.initiateAllClear && emergencyType == EmergencyType.Normal) {
+            val spacerHeight = if (viewModel.initiateAllClear) {
                 0.dp
             } else {
                 56.dp
@@ -220,7 +226,7 @@ fun ClearEmergency() {
                 Text(
                     modifier = Modifier
                         .padding(8.dp),
-                    text = stringResource(id = R.string.send_all_clear_button),
+                    text = stringResource(id = R.string.send_confirm_button),
                     fontSize = 18.sp,
                     color = MaterialTheme.colorScheme.onBackground
                 )
@@ -237,8 +243,8 @@ fun ConfirmAllClear(emergencyType: EmergencyType) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background),
-            //.padding(top = 56.dp),
+            .background(MaterialTheme.colorScheme.background)
+            .padding(top = 56.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(

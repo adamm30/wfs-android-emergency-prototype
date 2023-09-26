@@ -15,7 +15,7 @@
     <string name="help_alert_title">Help Alert</string>
     <string name="confirm_all_clear_dialog_title">Confirm All Clear</string>
     <string name="confirm_all_clear_dialog_body">Press Confirm to send All-Clear.</string>
-    <string name="send_all_clear_button">Send All-Clear</string>
+    <string name="send_confirm_button">Confirm</string>
     <string name="all_clear_sent_title">All Clear Sent</string>
     <string name="call_operator_body">Please call the operator to verbally clear the alarm.</string>
     <string name="call_now_button">Call Now</string>
@@ -24,4 +24,5 @@
     <string name="help_requested_title">Help Requested</string>
     <string name="help_requested_body">We\'ve sent a request for help to %1$s</string>
     <string name="send_all_clear_title">Send All-Clear</string>
+    <string name="seconds_title">Seconds</string>
 </resources>

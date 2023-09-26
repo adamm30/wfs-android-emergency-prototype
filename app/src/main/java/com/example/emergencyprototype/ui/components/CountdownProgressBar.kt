@@ -21,9 +21,11 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.emergencyprototype.R
 import kotlinx.coroutines.delay
 
 
@@ -75,7 +77,7 @@ fun CountdownCircularProgressBar(
                 textAlign = TextAlign.Center,
             )
             Text(
-                text = "Seconds",
+                text = stringResource(R.string.seconds_title),
                 fontSize = 25.sp,
                 color = MaterialTheme.colorScheme.onBackground,
                 textAlign = TextAlign.Center,
