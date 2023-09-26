@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -120,16 +119,7 @@ fun EmergencyUI(emergencyType: EmergencyType) {
                 ClearEmergency()
             }
         } else if (viewModel.confirmAllClear) {
-            val scroll = rememberScrollState(0)
-            Column(
-                modifier = Modifier
-                    .padding(top = 16.dp, bottom = 16.dp)
-                    .verticalScroll(scroll)
-                    .fillMaxSize()
-            )
-            {
-                ConfirmAllClear(emergencyType)
-            }
+            ConfirmAllClear(emergencyType)
         } else {
             val scroll = rememberScrollState(0)
             Column(
@@ -214,8 +204,6 @@ fun ClearEmergency() {
             Button(
                 onClick = {
                     viewModel.onAllClearConfirmedPressed()
-//                    viewModel.isAllClearConfirmedPressed = true
-//                    viewModel.isAllClearPressed = false
                 },
                 modifier = Modifier
                     .fillMaxWidth(0.90f)
@@ -240,13 +228,16 @@ fun ClearEmergency() {
 fun ConfirmAllClear(emergencyType: EmergencyType) {
     val context = LocalContext.current
     val viewModel: EmergencyViewModel = viewModel()
+    val scroll = rememberScrollState(0)
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
-            .padding(top = 56.dp),
+            .padding(top = 16.dp)
+            .verticalScroll(scroll),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Spacer(modifier = Modifier.height(56.dp))
         Image(
             painter = painterResource(id = R.drawable.ic_all_clear_sent),
             contentDescription = stringResource(R.string.AllClearAlertIconDescription),
@@ -276,48 +267,30 @@ fun ConfirmAllClear(emergencyType: EmergencyType) {
                 color = MaterialTheme.colorScheme.onBackground
             )
         }
-        Spacer(modifier = Modifier.height(56.dp))
-        Column(
-            modifier = Modifier.fillMaxHeight(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Bottom
-        ) {
+        Spacer(modifier = Modifier.weight(1f))
 
-            if (viewModel.isEmergencyEscalated && emergencyType == EmergencyType.Monitored) {
+        if (viewModel.isEmergencyEscalated && emergencyType == EmergencyType.Monitored) {
 
-                ExtendedFloatingActionButton(
-                    onClick = {
-                        // Implement the action when "Call Now" is clicked
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth(0.90f)
-                        .padding(8.dp),
-                    containerColor = MaterialTheme.colorScheme.primary
-                ) {
-                    Text(
-                        text = stringResource(id = R.string.call_now_button),
-                        fontSize = 18.sp,
-                        color = MaterialTheme.colorScheme.onBackground
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(16.dp))
-
+            ExtendedFloatingActionButton(
+                onClick = {
+                    // Implement the action when "Call Now" is clicked
+                },
+                modifier = Modifier
+                    .fillMaxWidth(0.90f)
+                    .padding(8.dp),
+                containerColor = MaterialTheme.colorScheme.primary
+            ) {
                 Text(
-                    text = stringResource(id = R.string.verbally_cleared_button),
-                    color = MaterialTheme.colorScheme.primary,
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.clickable {
-                        restartApp(context)
-                    }
+                    text = stringResource(id = R.string.call_now_button),
+                    fontSize = 18.sp,
+                    color = MaterialTheme.colorScheme.onBackground
                 )
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
-                text = "Restart Simulation",
+                text = stringResource(id = R.string.verbally_cleared_button),
                 color = MaterialTheme.colorScheme.primary,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
@@ -326,6 +299,19 @@ fun ConfirmAllClear(emergencyType: EmergencyType) {
                 }
             )
         }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Text(
+            text = "Restart Simulation",
+            color = MaterialTheme.colorScheme.primary,
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.clickable {
+                restartApp(context)
+            }
+        )
+
     }
 }
 
