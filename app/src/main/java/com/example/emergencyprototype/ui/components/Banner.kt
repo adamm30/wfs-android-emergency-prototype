@@ -102,7 +102,7 @@ fun Banner(emergencyType: EmergencyType, onButtonClick: () -> Unit, isCleared: B
             ) {
                 Text(
                     text = text,
-                    style = MaterialTheme.typography.titleMedium,
+                    style = MaterialTheme.typography.titleLarge,
                     color = MaterialTheme.colorScheme.onBackground,
                     maxLines = 2, // Adjust as needed
                     overflow = TextOverflow.Ellipsis // Add ellipsis (...) for overflow
@@ -135,7 +135,7 @@ fun Banner(emergencyType: EmergencyType, onButtonClick: () -> Unit, isCleared: B
                     ) {
                         Text(
                             text = stringResource(R.string.escalate),
-                            fontSize = 18.sp,
+                            fontSize = 22.sp,
                             color = MaterialTheme.colorScheme.onBackground
                         )
                     }

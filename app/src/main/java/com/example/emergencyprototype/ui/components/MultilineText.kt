@@ -17,6 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.TextFieldValue
@@ -45,12 +46,14 @@ fun MultiLineText(){
 
             modifier = Modifier
                 .padding(24.dp)
-                .fillMaxWidth().heightIn(150.dp),
+                .fillMaxWidth()
+                .heightIn(150.dp),
             colors = TextFieldDefaults.textFieldColors(
                 textColor =  MaterialTheme.colorScheme.onBackground,
                 cursorColor = MaterialTheme.colorScheme.onBackground,
                 focusedIndicatorColor = MaterialTheme.colorScheme.primary,
                 unfocusedIndicatorColor = MaterialTheme.colorScheme.onBackground,
+                containerColor = colorResource(id = R.color.dialog_gray)
             ),
             textStyle = TextStyle(fontSize = 18.sp),
             maxLines = 6
@@ -59,7 +62,9 @@ fun MultiLineText(){
         Text(
             text = "${text.text.length}/150",
             color = if (text.text.length > 150) Color.Red else Color.Gray,
-            modifier = Modifier.align(Alignment.BottomEnd).padding(start = 24.dp, end = 24.dp)
+            modifier = Modifier
+                .align(Alignment.BottomEnd)
+                .padding(start = 24.dp, end = 24.dp)
         )
     }
 }

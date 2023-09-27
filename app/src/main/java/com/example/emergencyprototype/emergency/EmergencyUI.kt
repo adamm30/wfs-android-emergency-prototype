@@ -38,6 +38,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -66,19 +67,17 @@ fun EmergencyUI(emergencyType: EmergencyType) {
                 .padding(top = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
-                text = titleText,
-                style = MaterialTheme.typography.titleLarge,
-                color = MaterialTheme.colorScheme.onBackground
-            )
+            if (!viewModel.confirmAllClear){
+                Text(
+                    text = titleText,
+                    style = MaterialTheme.typography.titleLarge,
+                    color = MaterialTheme.colorScheme.onBackground
+                )
+            }
+
         }
         Spacer(modifier = Modifier.height(8.dp))
 
-//        val showBanner =
-//            (!viewModel.confirmAllClear &&
-//                    (emergencyType == EmergencyType.Tiered || emergencyType == EmergencyType.Monitored))
-//            ||
-//            (viewModel.confirmAllClear && (emergencyType == EmergencyType.Monitored && viewModel.isEmergencyEscalated))
         val showBanner = (((emergencyType == EmergencyType.Tiered || emergencyType == EmergencyType.Monitored)
                     && viewModel.isEmergencyActive &&
                 ((emergencyType == EmergencyType.Monitored && (!viewModel.initiateAllClear || viewModel.isEmergencyEscalated))
@@ -92,7 +91,6 @@ fun EmergencyUI(emergencyType: EmergencyType) {
                 isCleared = viewModel.initiateAllClear
             )
         } else {
-//            val spacerHeight = if (viewModel.initiateAllClear && emergencyType == EmergencyType.Normal) {
             val spacerHeight = if (viewModel.initiateAllClear) {
                 0.dp
             } else {
@@ -111,7 +109,7 @@ fun EmergencyUI(emergencyType: EmergencyType) {
             }
             Column(
                 modifier = Modifier
-                    .padding(top = 16.dp, bottom = 16.dp)
+                    .padding(top = 8.dp, bottom = 8.dp)
                     .verticalScroll(scrollState)
                     .fillMaxSize()
             )
@@ -124,7 +122,7 @@ fun EmergencyUI(emergencyType: EmergencyType) {
             val scroll = rememberScrollState(0)
             Column(
                 modifier = Modifier
-                    .padding(top = 16.dp, bottom = 16.dp)
+                    .padding(top = 8.dp, bottom = 8.dp)
                     .verticalScroll(scroll)
                     .fillMaxSize()
             )
@@ -224,6 +222,11 @@ fun ClearEmergency() {
 }
 
 
+@Preview
+@Composable
+fun allClearPreview(){
+    ClearEmergency()
+}
 @Composable
 fun ConfirmAllClear(emergencyType: EmergencyType) {
     val context = LocalContext.current
@@ -233,7 +236,7 @@ fun ConfirmAllClear(emergencyType: EmergencyType) {
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
-            .padding(top = 16.dp)
+            .padding(top = 8.dp, start = 16.dp, end = 16.dp)
             .verticalScroll(scroll),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -248,7 +251,7 @@ fun ConfirmAllClear(emergencyType: EmergencyType) {
 
         Text(
             text = stringResource(id = R.string.all_clear_sent_title),
-            style = MaterialTheme.typography.titleLarge,
+            style = MaterialTheme.typography.headlineMedium,
             color = MaterialTheme.colorScheme.onBackground
         )
         if (viewModel.isEmergencyEscalated && emergencyType == EmergencyType.Monitored) {

@@ -13,4 +13,5 @@
     <color name="gray_600">#FF757575</color>
     <color name="success_green">#FF70BA36</color>
     <color name="escalating_red">#FFC93333</color>
+    <color name="dialog_gray">#FF6B6B6B</color>
 </resources>

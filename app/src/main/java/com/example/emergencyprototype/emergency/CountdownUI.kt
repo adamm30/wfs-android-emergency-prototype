@@ -2,13 +2,16 @@ package com.example.emergencyprototype.emergency
 
 import androidx.activity.OnBackPressedDispatcherOwner
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -38,28 +41,62 @@ fun CountdownUi(onCountdownExpired: () -> Unit){
             horizontalAlignment = Alignment.CenterHorizontally,
 
         ) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Text(
+                    text = "Sending alerts to",
+                    color = MaterialTheme.colorScheme.onBackground,
+                    style = MaterialTheme.typography.titleLarge,
+                )
+                Text(
+                    text = "Dillon Batt in....",
+                    color = MaterialTheme.colorScheme.onBackground,
+                    style = MaterialTheme.typography.titleLarge,
+                )
+            }
+
             Box(
                 contentAlignment = Alignment.Center
             )
             {
                 CountdownScreen(onCountdownExpired)
             }
-
-            ExtendedFloatingActionButton(
+            Button(
                 onClick = {
                     (context as? OnBackPressedDispatcherOwner)?.onBackPressedDispatcher?.onBackPressed()
                 },
                 modifier = Modifier
-                    .fillMaxWidth(0.90f)
-                    .padding(8.dp),
-                containerColor = MaterialTheme.colorScheme.primary
+                    .fillMaxWidth(0.80f)
+                    .padding(8.dp).border(width = 2.dp, color = MaterialTheme.colorScheme.primary, shape = RoundedCornerShape(14.dp)),
+//                shape = RoundedCornerShape(14.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.background,
+
+                )
             ) {
                 Text(
+                    modifier = Modifier
+                        .padding(8.dp),
                     text = stringResource(id = R.string.im_okay_button),
                     fontSize = 18.sp,
-                    color = MaterialTheme.colorScheme.onBackground
+                    color = MaterialTheme.colorScheme.primary
                 )
             }
+
+//            ExtendedFloatingActionButton(
+//                onClick = {
+//                    (context as? OnBackPressedDispatcherOwner)?.onBackPressedDispatcher?.onBackPressed()
+//                },
+//                modifier = Modifier
+//                    .fillMaxWidth(0.70f)
+//                    .padding(8.dp),
+//                containerColor = MaterialTheme.colorScheme.background,
+//            ) {
+//                Text(
+//                    text = stringResource(id = R.string.im_okay_button),
+//                    fontSize = 18.sp,
+//                    color = MaterialTheme.colorScheme.primary
+//                )
+//            }
         }
     }
 }
