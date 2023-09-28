@@ -6,8 +6,8 @@
     <string name="help_requested_alarm_sound_on">Silenciar Alarma</string>
     <string name="help_requested_alarm_sound_off">Activar Sonido de Alarma</string>
     <string name="placeholder_notes">Cuéntanos qué sucedió (opcional)</string>
-    <string name="confirmation_dialog_option">Confirmar</string>
-    <string name="dismiss_dialog_option">Descartar</string>
+    <string name="yes_dialog_option">Si</string>
+    <string name="cancel_dialog_option">Descartar</string>
     <string name="tier_two_notified">Contactos de Nivel 2 notificados</string>
     <string name="tier_two_cleared">Despejado</string>
     <string name="tier_2_escalation_text">Escalada de Nivel 2 en %1$s</string>

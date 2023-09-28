@@ -57,7 +57,7 @@ fun MultiLineText(){
                 cursorColor = MaterialTheme.colorScheme.onBackground,
                 focusedIndicatorColor = MaterialTheme.colorScheme.primary,
                 unfocusedIndicatorColor = MaterialTheme.colorScheme.onBackground,
-                containerColor = colorResource(id = R.color.dialog_gray)
+                containerColor = colorResource(id = R.color.multiline_text_field_gray)
             ),
             textStyle = TextStyle(fontSize = 18.sp),
             maxLines = 6

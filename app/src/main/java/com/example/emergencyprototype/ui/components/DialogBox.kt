@@ -1,11 +1,11 @@
 package com.example.emergencyprototype.ui.components
 
 
-import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -14,27 +14,27 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.emergencyprototype.R
-import com.example.emergencyprototype.emergency.EmergencyViewModel
 
 @Composable
 fun TwoButtonDialog(title: String, body: String, onConfirm: () -> Unit, onDismiss: () -> Unit) {
-    val viewModel: EmergencyViewModel = viewModel()
     AlertDialog(
+        containerColor = colorResource(id = R.color.dialog_gray),
         onDismissRequest = {
 
         },
         title = {
             Text(
                 title,
-                fontSize = 20.sp,
+                style = MaterialTheme.typography.titleMedium,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                color = Color.White
             )
         },
         // Cancel Button
@@ -44,14 +44,17 @@ fun TwoButtonDialog(title: String, body: String, onConfirm: () -> Unit, onDismis
                     onDismiss()
                 },
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.White
+                    containerColor = colorResource(id = R.color.dialog_gray)
                 ),
-                border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary),
                 modifier = Modifier
                     .fillMaxWidth()
+                    .padding(8.dp),
+                shape = RoundedCornerShape(14.dp),
+                border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary)
             ) {
                 Text(
-                    text = stringResource(R.string.dismiss_dialog_option),
+                    modifier = Modifier.padding(top = 4.dp, bottom = 4.dp),
+                    text = stringResource(R.string.cancel_dialog_option),
                     color = MaterialTheme.colorScheme.primary,
                     fontSize = 16.sp
                 )
@@ -59,25 +62,31 @@ fun TwoButtonDialog(title: String, body: String, onConfirm: () -> Unit, onDismis
         },
         // Delete Button
         dismissButton = {
-
             Button(
                 onClick = {
-                    Log.d("Adam", "In Onclick")
                     onConfirm()
                 },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.primary
-                ),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 1.dp)
-                    .offset(y = 15.dp)
+                    .padding(8.dp)
+                    .offset(y = 15.dp),
+                shape = RoundedCornerShape(14.dp),
+                border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary)
             ) {
-                Text(text = stringResource(R.string.confirmation_dialog_option), color = Color.White, fontSize = 16.sp)
+                Text(
+                    text = stringResource(R.string.yes_dialog_option),
+                    fontSize = 16.sp,
+                    color = Color.White,
+                    modifier = Modifier.padding(top = 4.dp, bottom = 4.dp)
+                )
             }
         },
         text = {
-            Text(body, fontSize = 16.sp)
+            Text(
+                body,
+                style = MaterialTheme.typography.bodyLarge,
+                color = Color.White,
+                textAlign = TextAlign.Center)
         }
     )
 }

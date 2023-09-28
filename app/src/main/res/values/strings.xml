@@ -5,8 +5,8 @@
     <string name="help_requested_alarm_sound_on">Mute Alarm</string>
     <string name="help_requested_alarm_sound_off">Unmute Alarm</string>
     <string name="placeholder_notes">Tell us what happened (optional)</string>
-    <string name="confirmation_dialog_option">Confirm</string>
-    <string name="dismiss_dialog_option">Dismiss</string>
+    <string name="yes_dialog_option">Yes</string>
+    <string name="cancel_dialog_option">Cancel</string>
     <string name="tier_two_notified">Tier 2 contacts notified</string>
     <string name="tier_two_cleared">Cleared</string>
     <string name="tier_2_escalation_text">Tier 2 escalation in %1$s</string>
@@ -14,7 +14,7 @@
     <string name="all_clear_reason_title">Reason for all clear</string>
     <string name="help_alert_title">Help Alert</string>
     <string name="confirm_all_clear_dialog_title">Confirm All Clear</string>
-    <string name="confirm_all_clear_dialog_body">Press Confirm to send All-Clear.</string>
+    <string name="confirm_all_clear_dialog_body">Are you sure you want to clear this alarm?</string>
     <string name="send_confirm_button">Confirm</string>
     <string name="all_clear_sent_title">All Clear Sent</string>
     <string name="call_operator_body">Please call the operator to verbally clear the alarm.</string>
