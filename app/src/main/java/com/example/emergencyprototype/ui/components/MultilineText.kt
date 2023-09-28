@@ -41,8 +41,12 @@ fun MultiLineText(){
                     text = newText
                 }
             },
-            placeholder = { Text(
-                stringResource(R.string.placeholder_notes), color = Color.LightGray) },
+            placeholder = {
+                Text(
+                    stringResource(R.string.placeholder_notes),
+                    color = Color.LightGray.copy(alpha = 0.6f)
+                )
+            },
 
             modifier = Modifier
                 .padding(24.dp)

@@ -19,8 +19,11 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Call
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
@@ -240,7 +243,7 @@ fun ConfirmAllClear(emergencyType: EmergencyType) {
             .verticalScroll(scroll),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(modifier = Modifier.height(56.dp))
+        Spacer(modifier = Modifier.height(72.dp))
         Image(
             painter = painterResource(id = R.drawable.ic_all_clear_sent),
             contentDescription = stringResource(R.string.AllClearAlertIconDescription),
@@ -281,14 +284,14 @@ fun ConfirmAllClear(emergencyType: EmergencyType) {
                 modifier = Modifier
                     .fillMaxWidth(0.90f)
                     .padding(8.dp),
-                containerColor = MaterialTheme.colorScheme.primary
-            ) {
-                Text(
+                containerColor = MaterialTheme.colorScheme.primary,
+                icon = { Icon(Icons.Filled.Call, "Extended floating action button.", tint= MaterialTheme.colorScheme.onBackground) },
+                text = { Text(
                     text = stringResource(id = R.string.call_now_button),
                     fontSize = 18.sp,
                     color = MaterialTheme.colorScheme.onBackground
-                )
-            }
+                ) },
+            )
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -299,7 +302,8 @@ fun ConfirmAllClear(emergencyType: EmergencyType) {
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.clickable {
                     restartApp(context)
-                }
+                },
+                textAlign = TextAlign.Center
             )
         }
 

@@ -52,7 +52,7 @@ fun AlarmUI() {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .background(MaterialTheme.colorScheme.background)
-            .padding(top = 56.dp)
+            .padding(top = 72.dp)
             .fillMaxSize()
     ) {
 
